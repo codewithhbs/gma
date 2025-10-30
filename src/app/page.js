@@ -8,6 +8,7 @@ import HeroSlider from "@/components/home-component/HeroSlider";
 import Team from "@/components/home-component/Team";
 import WhyChooseGma from "@/components/home-component/WhyChooseGma";
 import ParentTestimonials from "@/components/home-component/ParentTestimonials";
+import PrincipalMessage from "@/components/home-component/PrincipalMessage";
 import React from "react";
 
 export default function Page() {
@@ -15,6 +16,7 @@ export default function Page() {
     <>
       <HeroSlider /> 
       <DirectorMessage />
+      <PrincipalMessage />
       <CardFacility />
       <AboutUs />
       <WhyChooseGma />
