@@ -47,4 +47,4 @@ const BestschoolwithsportsfacilitiesinSahastradhara = () => {
     )
 }
 
-export default BestSportsfacilitiesSchoolnearPacificGolfSocietySahastradhara
+export default BestschoolwithsportsfacilitiesinSahastradhara;

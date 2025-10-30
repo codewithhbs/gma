@@ -1,4 +1,5 @@
 import PageTitle from "@/components/pages/PageTitle"
+// import BestschoolwithsportsfacilitiesinSahastradhara from "@/components/pages/BestschoolwithsportsfacilitiesinSahastradhara"
  
 
 export const metadata = {
@@ -16,7 +17,7 @@ const page = () => {
 
     <>
       <PageTitle title="Best School with Sports Facilities in Sahastradhara" />
-      <BestschoolwithsportsfacilitiesinSahastradhara />
+      {/* <BestschoolwithsportsfacilitiesinSahastradhara /> */}
     </>
 
   )
