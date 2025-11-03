@@ -148,7 +148,7 @@ const Header = () => {
       ],
     },
     {
-      name: "Career",
+      name: "Careers",
       href: "#",
     },
 

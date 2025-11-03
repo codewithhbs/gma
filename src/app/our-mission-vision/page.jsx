@@ -2,7 +2,7 @@
 
 const VisionMission = () => {
   return (
-    <section className="bg-gray-50 py-16">
+    <section className="bg-gray-50 py-16 pt-60">
       <div className="max-w-7xl mx-auto px-4">
         {/* School Header */}
         <div className="text-center mb-16">

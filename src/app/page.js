@@ -6,7 +6,7 @@ import DirectorMessage from "@/components/home-component/DirectorMessage";
 import Gallery from "@/components/home-component/Gallery";
 import HeroSlider from "@/components/home-component/HeroSlider";
 import Team from "@/components/home-component/Team";
-import WhyChooseGma from "@/components/home-component/WhyChooseGma";
+import WhyChooseUs from '@/components/home-component/WhyChooseUs'; 
 import ParentTestimonials from "@/components/home-component/ParentTestimonials";
 import PrincipalMessage from "@/components/home-component/PrincipalMessage";
 import React from "react";
@@ -19,7 +19,7 @@ export default function Page() {
       <PrincipalMessage />
       <CardFacility />
       <AboutUs />
-      <WhyChooseGma />
+      <WhyChooseUs />
       <ParentTestimonials />
       <ContactArea />
       <Gallery />

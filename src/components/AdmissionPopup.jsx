@@ -12,8 +12,24 @@ export default function AdmissionPopup() {
   });
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowPopup(true), 1000);
-    return () => clearTimeout(timer);
+    // Check if popup was already shown
+    const alreadyShown = localStorage.getItem('gmaPopupShown');
+
+    if (!alreadyShown) {
+      const timer = setTimeout(() => {
+        setShowPopup(true);
+        localStorage.setItem('gmaPopupShown', 'true');
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  // ✅ Listen for custom "openAdmissionPopup" event (triggered by marquee click)
+  useEffect(() => {
+    const handleOpenPopup = () => setShowPopup(true);
+    window.addEventListener('openAdmissionPopup', handleOpenPopup);
+    return () => window.removeEventListener('openAdmissionPopup', handleOpenPopup);
   }, []);
 
   const handleChange = (e) => {
@@ -22,12 +38,11 @@ export default function AdmissionPopup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    const mainEmail = "Principal.gmaddnschool@gmail.com";
-    const secondEmail = "kanika.hrgmaschool@gmail.com";
-    const thirdEmail = "hbsdevelopersteam@gmail.com";
 
-    // Create email subject and body
+    const mainEmail = 'Principal.gmaddnschool@gmail.com';
+    const secondEmail = 'kanika.hrgmaschool@gmail.com';
+    const thirdEmail = 'hbsdevelopersteam@gmail.com';
+
     const subject = `New Admission Inquiry - ${formData.childClass}`;
     const body = `
 New admission inquiry received:
@@ -40,13 +55,12 @@ Class: ${formData.childClass}
 Submitted on: ${new Date().toLocaleString()}
     `.trim();
 
-    // Create mailto link with multiple recipients (CC)
-    const mailtoLink = `mailto:${mainEmail}?cc=${secondEmail},${thirdEmail}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    // Open email client
+    const mailtoLink = `mailto:${mainEmail}?cc=${secondEmail},${thirdEmail}&subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
     window.location.href = mailtoLink;
 
-    console.log('Form Data Submitted:', formData);
     alert('Thank you for your interest! Please check your email client to send the application.');
     setShowPopup(false);
   };
@@ -61,6 +75,7 @@ Submitted on: ${new Date().toLocaleString()}
         </button>
         <h2 className="gma-popup-title">Admissions Open - GMA International School</h2>
         <p className="gma-popup-subtitle">Enroll your child from Nursery to Grade 8</p>
+
         <form className="gma-popup-form" onSubmit={handleSubmit}>
           <input
             className="gma-input"
@@ -172,7 +187,6 @@ Submitted on: ${new Date().toLocaleString()}
         }
         .gma-submit-btn:hover {
           background: #009689;
-          color: #fff;
         }
       `}</style>
     </div>

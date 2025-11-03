@@ -51,7 +51,7 @@ const ContactUsPage = () => {
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-bold text-[#011943] mb-2">Dehradun Branch</h3>
-                <p className="text-gray-900 text-md leading-relaxed">Radha Krishna enclave, Nagal Hatnala Shastradhara Road<br/>Near Uttranchal University (pharma) Dehradun<br/>Uttrakhand 248001</p>
+                <p className="text-gray-900 text-md leading-relaxed">Radha Krishna enclave, Nagal Hatnala Shastradhara Road<br/>Near Uttaranchal University (pharma) Dehradun<br/>Uttarakhand 248001</p>
                 
               </div>
             </div>
@@ -87,7 +87,7 @@ const ContactUsPage = () => {
               <div className="flex-1">
                 <h3 className="text-lg font-bold text-[#011943] mb-2">E-mail Address</h3>
                 <p className="text-gray-900 text-md leading-relaxed">gmainternational.dehradun@gmail.com</p>
-                <p className="text-gray-600 text-sm leading-relaxed">Principal.gmaddnschool@gmail.com</p>
+                <p className="text-gray-900 text-md leading-relaxed">Principal.gmaddnschool@gmail.com</p>
               </div>
             </div>
           </div>

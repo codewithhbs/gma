@@ -49,7 +49,7 @@ const Footer = () => {
                   <MapPin className="w-4 h-4 text-slate-900" />
                 </div>
                 <span className="text-gray-300">
-                  Radha Krishna enclave, Nagal Hatnala Shastradhara road Near Uttranchal University (pharma) Dehradun Uttrakhand 248001
+                  Radha Krishna enclave, Nagal Hatnala Shastradhara road Near Uttaranchal University (pharma) Dehradun Uttarakhand 248001
                 </span>
               </div>
 

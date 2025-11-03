@@ -109,8 +109,7 @@ const Nurse = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Health Services We Provide</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3">
-              {['First Aid & Emergency Care', 'Health Screenings', 'Medication Administration', 
-                'Chronic Disease Management'].map((service) => (
+              {['First Aid', 'Health Education', 'Medication "Counseling"'].map((service) => (
                 <div key={service} className="flex items-center">
                   <svg className="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -119,17 +118,7 @@ const Nurse = () => {
                 </div>
               ))}
             </div>
-            <div className="space-y-3">
-              {['Immunization Compliance', 'Health Education', 'Mental Health Support', 
-                'Parent Health Consultations'].map((service) => (
-                <div key={service} className="flex items-center">
-                  <svg className="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-gray-700">{service}</span>
-                </div>
-              ))}
-            </div>
+            
           </div>
         </div>
 

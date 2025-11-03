@@ -61,8 +61,14 @@ const Header = () => {
     },
     {
       name: "About Us",
-      href: "/about-us",
-      icon: <Users className="w-4 h-4" />,
+      href: "#",
+      icon: <Award className="w-4 h-4" />,
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Mission Vision", href: "/our-mission-vision" },
+        { name: "Director and Founder", href: "/director-message" },
+        { name: "Principal", href: "/principal-message" },
+      ],
     },
     {
       name: "Admissions",
@@ -132,20 +138,20 @@ const Header = () => {
       ],
     },
     {
-  name: "Career",
-  href: "/careers",
-  icon: <Award className="w-4 h-4" />,
-  hasDropdown: true,
-  dropdownItems: [
-    { name: "View All Positions", href: "/careers" },                  
-    { name: "Preprimary Teachers", href: "/careers/preprimary-teachers" },
-    { name: "Mother Teacher", href: "/careers/mother-teacher" },      
-    { name: "Subject Teachers", href: "/careers/subject-teachers" },   
-    { name: "Computer Faculty", href: "/careers/computer-faculty" },    
-    { name: "Nurse", href: "/careers/nurse" },                         
-    { name: "Librarian", href: "/careers/librarian" }, 
-  ],
-},
+      name: "Careers",
+      href: "/careers",
+     
+      // hasDropdown: true,
+      // dropdownItems: [
+      //   { name: "View All Positions", href: "/careers" },
+      //   { name: "Preprimary Teachers", href: "/careers/preprimary-teachers" },
+      //   { name: "Mother Teacher", href: "/careers/mother-teacher" },
+      //   { name: "Subject Teachers", href: "/careers/subject-teachers" },
+      //   { name: "Computer Faculty", href: "/careers/computer-faculty" },
+      //   { name: "Nurse", href: "/careers/nurse" },
+      //   { name: "Librarian", href: "/careers/librarian" },
+      // ],
+    },
     {
       name: "Contact us",
       href: "/contact-us",
@@ -175,131 +181,133 @@ const Header = () => {
 
             {/* Marquee */}
             <div className="w-full lg:w-auto lg:max-w-lg overflow-hidden">
-              <div className="marquee-container">
+              <div
+                className="marquee-container cursor-pointer"
+                onClick={() => {
+                  const event = new Event('openAdmissionPopup');
+                  window.dispatchEvent(event);
+                }}
+                title="Click to apply for admission"
+              >
                 <div className="marquee-content">
                   <span className="text-cyan-300 text-sm font-medium">
                     <marquee className="font-md text-white">
-                       🎓 Admissions Open for Class Nursery to Grade 8 | 🚀 Enroll Now for 2026 🏆
-                      {/* 🎓 Admissions Open 2026! Limited Seats Available | 📚 New
-                      AI & Robotics Programs | 🏆 Excellence in Education Since
-                      2015 */}
+                      🎓 Admissions Open for Class Nursery to Grade 8 | 🚀 Enroll Now for 2026-2027 🏆
                     </marquee>
                   </span>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
 
       {/* Main Header */}
       <div
-        className={`bg-white/95 backdrop-blur-md transition-all duration-300 ${
-          isScrolled ? "shadow-lg border-b border-gray-200" : ""
-        }`}
+        className={`bg-white/95 backdrop-blur-md transition-all duration-300 ${isScrolled ? "shadow-lg border-b border-gray-200" : ""
+          }`}
       >
         <div className=" bg-[antiquewhite] w-full">
-<div className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-2">
-            {/* Logo Section */}
-            <Link href="/">
-              <div className="flex items-center space-x-4">
-                <div className="relative group">
-                  <div className="">
-                    <Image
-                      src="/images/gma-web-logo.webp"
-                      width={80}
-                      alt="logo"
-                      height={90}
-                      className="h-[80px] w-[70px] md:w-[90px] md:h-[100px]"
-                    />
+          <div className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center py-2">
+              {/* Logo Section */}
+              <Link href="/">
+                <div className="flex items-center space-x-4">
+                  <div className="relative group">
+                    <div className="">
+                      <Image
+                        src="/images/gma-web-logo.webp"
+                        width={80}
+                        alt="logo"
+                        height={90}
+                        className="h-[80px] w-[70px] md:w-[90px] md:h-[100px]"
+                      />
+                    </div>
+                  </div>
+                  <div className="hidden sm:block">
+                    <h1 className="text-2xl font-bold bg-gradient-to-r from-teal-600 to-teal-600 bg-clip-text text-transparent">
+                      GMA International School
+                    </h1>
+                    <p className="text-sm text-gray-600 font-medium">
+                      Nurturing Tomorrow In Caring Hands
+                      <br />
+                      (To be Affiliated to CBSE)
+                    </p>
                   </div>
                 </div>
-                <div className="hidden sm:block">
-                  <h1 className="text-2xl font-bold bg-gradient-to-r from-teal-600 to-teal-600 bg-clip-text text-transparent">
-                    GMA International School
-                  </h1>
-                  <p className="text-sm text-gray-600 font-medium">
-                    Nurturing Tomorrow In Caring Hands
-                    <br />
-                    (Affiliated to CBSE)
-                  </p>
-                </div>
-              </div>
-            </Link>
-            {/* Right Section */}
-            <div className="flex items-center space-x-4">
-              {/* Social Icons - Desktop only */}
-              <div className="md:flex items-center space-x-2 hidden">
-                <a
-                  href="#"
-                  target="_blank"
-                  className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:scale-110 group"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-                </a>
-                <a
-                  target="_blank"
-                  href="https://www.instagram.com/gmainternational.dehradun/"
-                  className="w-10 h-10 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:scale-110 group"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:scale-110 group"
-                  aria-label="YouTube"
-                >
-                  <Youtube className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:scale-110 group"
-                  aria-label="WhatsApp"
-                >
-                  <FaWhatsapp className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
-                </a>
-              </div>
-
-              {/* Apply Now Button - Desktop */}
-              <Link
-                href="/contact-us"
-                className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group text-sm sm:text-base"
-              >
-                <span>APPLY NOW</span>
-                <div className="w-2 h-2 bg-white rounded-full group-hover:scale-125 transition-transform"></div>
               </Link>
-
-              {/* Mobile Menu Toggle - Show on screens < 1200px */}
-              <button
-                onClick={toggleMobileMenu}
-                className="custom-lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors relative group lg:hidden"
-                aria-label="Toggle mobile menu"
-              >
-                <div className="relative w-6 h-6">
-                  <Menu
-                    className={`w-6 h-6 text-gray-700 absolute transition-all duration-300 ${
-                      isMobileMenuOpen
-                        ? "opacity-0 rotate-180"
-                        : "opacity-100 rotate-0"
-                    }`}
-                  />
-                  <X
-                    className={`w-6 h-6 text-gray-700 absolute transition-all duration-300 ${
-                      isMobileMenuOpen
-                        ? "opacity-100 rotate-0"
-                        : "opacity-0 -rotate-180"
-                    }`}
-                  />
+              {/* Right Section */}
+              <div className="flex items-center space-x-4">
+                {/* Social Icons - Desktop only */}
+                <div className="md:flex items-center space-x-2 hidden">
+                  <a
+                    href="#"
+                    target="_blank"
+                    className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:scale-110 group"
+                    aria-label="Facebook"
+                  >
+                    <Facebook className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                  </a>
+                  <a
+                    target="_blank"
+                    href="https://www.instagram.com/gmainternational.dehradun/"
+                    className="w-10 h-10 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:scale-110 group"
+                    aria-label="Instagram"
+                  >
+                    <Instagram className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                  </a>
+                  <a
+                    href="#"
+                    className="w-10 h-10 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:scale-110 group"
+                    aria-label="YouTube"
+                  >
+                    <Youtube className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                  </a>
+                  <a
+                    href="#"
+                    className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center hover:shadow-lg transition-all duration-300 hover:scale-110 group"
+                    aria-label="WhatsApp"
+                  >
+                    <FaWhatsapp className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                  </a>
                 </div>
-              </button>
+
+                {/* Apply Now Button - Desktop */}
+                <Link
+                  href="/contact-us"
+                  className="flex items-center space-x-2 bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold hover:from-emerald-600 hover:to-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group text-sm sm:text-base"
+                >
+                  <span>APPLY NOW</span>
+                  <div className="w-2 h-2 bg-white rounded-full group-hover:scale-125 transition-transform"></div>
+                </Link>
+
+                {/* Mobile Menu Toggle - Show on screens < 1200px */}
+                <button
+                  onClick={toggleMobileMenu}
+                  className="custom-lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors relative group lg:hidden"
+                  aria-label="Toggle mobile menu"
+                >
+                  <div className="relative w-6 h-6">
+                    <Menu
+                      className={`w-6 h-6 text-gray-700 absolute transition-all duration-300 ${isMobileMenuOpen
+                          ? "opacity-0 rotate-180"
+                          : "opacity-100 rotate-0"
+                        }`}
+                    />
+                    <X
+                      className={`w-6 h-6 text-gray-700 absolute transition-all duration-300 ${isMobileMenuOpen
+                          ? "opacity-100 rotate-0"
+                          : "opacity-0 -rotate-180"
+                        }`}
+                    />
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        </div>
-        
+
       </div>
 
       {/* desktop header */}
@@ -377,9 +385,8 @@ const Header = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-90 md:w-110 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-all duration-300 ease-out custom-lg:hidden ${
-          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 h-full w-90 md:w-110 max-w-[85vw] bg-white shadow-2xl z-50 transform transition-all duration-300 ease-out custom-lg:hidden ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="p-6 h-full overflow-y-auto">
           {/* Mobile Header */}

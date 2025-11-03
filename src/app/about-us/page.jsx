@@ -2,7 +2,7 @@ import React from "react";
 import DirectorMessage from "@/components/home-component/DirectorMessage";
 import SubpageBanner from "@/components/layouts/SubpageBanner";
 import PrincipalMessage from "@/components/home-component/PrincipalMessage";
-import VisionMission from  "./missionvission"
+import VisionMission from  "../our-mission-vision/page"
 import Aboutcompo from  "./aboutcom"
 <SubpageBanner title="About Us" backgroundImage="images/bg.png" />
 

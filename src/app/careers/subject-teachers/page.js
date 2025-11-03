@@ -109,9 +109,9 @@ const SubjectTeachers = () => {
         <div className="mt-8 bg-white rounded-2xl shadow-lg p-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Available Subject Areas</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'History', 
-              'Geography', 'Computer Science', 'Art', 'Music', 'Physical Education', 
-              'Foreign Languages'].map((subject) => (
+            {['Hindi','Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'History', 
+              'Geography', 'Computer Science', 'Art','Dance', 'Social','French', 'Spanish', 'Yoga', 'Music', 'Physical Education', 
+              'Foreign Languages', 'Abacus'].map((subject) => (
               <div key={subject} className="bg-gray-50 rounded-lg p-3 text-center">
                 <span className="text-gray-800 font-medium">{subject}</span>
               </div>

@@ -11,15 +11,15 @@ const ApplicationForm = ({ positionTitle }) => {
     resume: null
   });
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  const mainEmail = "Principal.gmaddnschool@gmail.com";
-  const secondEmail = "kanika.hrgmaschool@gmail.com"; 
-  const thirdmail = "hbsdevelopersteam@gmail.com"; 
-  
-  const mailtoLink = `mailto:${mainEmail}?cc=${secondEmail}?cc=${thirdmail}&subject=Application for ${positionTitle}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0AExperience: ${formData.experience}%0D%0AMessage: ${formData.message}`;
-  window.location.href = mailtoLink;
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const mainEmail = "Principal.gmaddnschool@gmail.com";
+    const secondEmail = "kanika.hrgmaschool@gmail.com";
+    const thirdmail = "hbsdevelopersteam@gmail.com";
+
+    const mailtoLink = `mailto:${mainEmail}?cc=${secondEmail}?cc=${thirdmail}&subject=Application for ${positionTitle}&body=Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0APhone: ${formData.phone}%0D%0AExperience: ${formData.experience}%0D%0AMessage: ${formData.message}`;
+    window.location.href = mailtoLink;
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -121,8 +121,9 @@ const handleSubmit = (e) => {
 
         <div>
           <p className="text-sm text-gray-600 mb-4">
-            * After submitting this form, you'll be prompted to attach your resume and other documents via email.
+            * After submitting this form, you'll be prompted to attach your resume, cover letter, and any other supporting documents via email before sending your application.
           </p>
+
           <button
             type="submit"
             className="w-full md:w-auto px-8 py-4 bg-[#009689] text-white font-semibold rounded-lg hover:bg-[#007a6e] transition-colors flex items-center justify-center"
@@ -137,7 +138,7 @@ const handleSubmit = (e) => {
 
       <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
         <p className="text-blue-800 text-sm">
-          <strong>Note:</strong> After clicking the submit button, your email client will open with a pre-filled message. 
+          <strong>Note:</strong> After clicking the submit button, your email client will open with a pre-filled message.
           Please attach your resume and any other required documents before sending the email.
         </p>
       </div>
