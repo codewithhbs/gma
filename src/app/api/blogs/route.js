@@ -1,0 +1,118 @@
+import { NextResponse } from "next/server";
+import { connectToDB } from "@/lib/dbConnect";
+import Blog from "@/lib/models/Blog";
+import { verifyToken } from "@/lib/auth";
+import { uploadToCloudinary } from "@/lib/uploadImage";
+import Category from "@/lib/models/Category";
+
+
+  export async function OPTIONS() {
+    return NextResponse.json(
+      {},
+      {
+        status: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "http://localhost:3000",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, x-admin-token",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      }
+    );
+  }
+  
+  export async function GET() {
+    await connectToDB();
+    const blogs = await Blog.find()
+      .populate("category", "name")
+      .sort({ createdAt: -1 });
+    return NextResponse.json(blogs);
+  }
+
+
+export async function POST(req) {
+  try {
+    await connectToDB();
+
+    // Token validation
+    const token = req.headers.get("x-admin-token");
+    const payload = verifyToken(token);
+
+    if (!payload) {
+      return NextResponse.json(
+        { message: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
+    // Read Multipart Form Data
+    const formData = await req.formData();
+
+    const title = formData.get("title");
+    const slug = formData.get("slug");
+    const content = formData.get("content");
+    const category = formData.get("category");
+    const tags = formData.get("tags");
+    const altText = formData.get("altText") || "";
+
+    const metaTitle = formData.get("metaTitle");
+    const metaDescription = formData.get("metaDescription");
+    const metaKeywords = formData.get("metaKeywords");
+    const canonicalUrl = formData.get("canonicalUrl");
+    const ogTitle = formData.get("ogTitle");
+    const ogDescription = formData.get("ogDescription");
+    const index = formData.get("index");
+    const follow = formData.get("follow");
+
+    // ---- Image Upload using Base64 ----
+    let imageData = {};
+
+    const image = formData.get("image");
+
+    if (image && image.size > 0) {
+      // Convert file → buffer → base64 (Cloudinary-safe)
+      const bytes = await image.arrayBuffer();
+      const buffer = Buffer.from(bytes);
+      const base64String = `data:${image.type};base64,${buffer.toString("base64")}`;
+
+      const uploaded = await uploadToCloudinary(base64String, "blogs");
+
+      imageData = {
+        url: uploaded.url,
+        key: uploaded.key,
+        alt: altText,
+      };
+    }
+
+    // ---- Create Blog ----
+    const blog = await Blog.create({
+      title,
+      slug,
+      content,
+      category,
+      tags,
+      metaTitle,
+      metaDescription,
+      metaKeywords,
+      canonicalUrl,
+      ogTitle,
+      ogDescription,
+      index,
+      follow,
+      author: payload.sub,
+      image: imageData,
+    });
+
+    return NextResponse.json(
+      { success: true, blog },
+      { status: 201 }
+    );
+
+  } catch (error) {
+    console.error("Blog Create Error:", error);
+    return NextResponse.json(
+      { message: "Create failed", error: error.message },
+      { status: 500 }
+    );
+  }
+}
