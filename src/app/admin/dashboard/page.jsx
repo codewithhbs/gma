@@ -66,26 +66,20 @@ export default function Dashboard() {
                 {/* Card */}
                 {[
                     {
-                        title: "Students",
-                        value: "1200+",
+                        title: "Categories",
+                        value: "05+",
                         icon: <Users className="w-10 h-10" />,
                         gradient: "from-blue-500 to-blue-600",
                     },
                     {
-                        title: "Courses",
-                        value: "35",
+                        title: "Pages",
+                        value: "07",
                         icon: <BookOpen className="w-10 h-10" />,
                         gradient: "from-green-500 to-emerald-600",
                     },
                     {
-                        title: "Enquiries",
-                        value: "6",
-                        icon: <MessageSquare className="w-10 h-10" />,
-                        gradient: "from-purple-500 to-indigo-600",
-                    },
-                    {
                         title: "Blogs",
-                        value: "50",
+                        value: "08",
                         icon: <Folder className="w-10 h-10" />,
                         gradient: "from-pink-500 to-rose-600",
                     },

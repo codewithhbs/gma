@@ -5,45 +5,33 @@ import { verifyToken } from "@/lib/auth";
 import { uploadToCloudinary } from "@/lib/uploadImage";
 import Category from "@/lib/models/Category";
 
+export async function OPTIONS() {
+  return NextResponse.json(
+    {},
+    {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Access-Control-Allow-Methods":
+          "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, x-admin-token",
+        "Access-Control-Allow-Credentials": "true",
+      },
+    }
+  );
+}
 
-  export async function OPTIONS() {
-    return NextResponse.json(
-      {},
-      {
-        status: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "http://localhost:3000",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, x-admin-token",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      }
-    );
-  }
-  
-  export async function GET() {
-    await connectToDB();
-    const blogs = await Blog.find()
-      .populate("category", "name")
-      .sort({ createdAt: -1 });
-    return NextResponse.json(blogs);
-  }
-
+export async function GET() {
+  await connectToDB();
+  const blogs = await Blog.find()
+    .populate("category", "name")
+    .sort({ createdAt: -1 });
+  return NextResponse.json(blogs);
+}
 
 export async function POST(req) {
   try {
     await connectToDB();
-
-    // Token validation
-    const token = req.headers.get("x-admin-token");
-    const payload = verifyToken(token);
-
-    if (!payload) {
-      return NextResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      );
-    }
 
     // Read Multipart Form Data
     const formData = await req.formData();
@@ -73,7 +61,9 @@ export async function POST(req) {
       // Convert file → buffer → base64 (Cloudinary-safe)
       const bytes = await image.arrayBuffer();
       const buffer = Buffer.from(bytes);
-      const base64String = `data:${image.type};base64,${buffer.toString("base64")}`;
+      const base64String = `data:${image.type};base64,${buffer.toString(
+        "base64"
+      )}`;
 
       const uploaded = await uploadToCloudinary(base64String, "blogs");
 
@@ -99,15 +89,10 @@ export async function POST(req) {
       ogDescription,
       index,
       follow,
-      author: payload.sub,
       image: imageData,
     });
 
-    return NextResponse.json(
-      { success: true, blog },
-      { status: 201 }
-    );
-
+    return NextResponse.json({ success: true, blog }, { status: 201 });
   } catch (error) {
     console.error("Blog Create Error:", error);
     return NextResponse.json(

@@ -52,13 +52,7 @@ export async function PUT(req, { params }) {
   try {
     await connectToDB();
 
-    // token from header
-    const token = req.headers.get("x-admin-token");
-    if (!token) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
-
-    verifyToken(token);
+   
 
     const { id } = params;
 
