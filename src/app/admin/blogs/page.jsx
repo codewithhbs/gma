@@ -101,7 +101,7 @@ export default function CategoriesPage() {
         try {
             const token = localStorage.getItem("adminToken");
 
-            const res = await fetch(`/api/blogs/${deleteId}`, {
+            const res = await fetch(`/api/blogs/by-id/${deleteId}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

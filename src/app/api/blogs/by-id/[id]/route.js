@@ -150,13 +150,6 @@ export async function DELETE(req, { params }) {
   try {
     await connectToDB();
 
-    const headerToken = req.headers.get("x-admin-token");
-    if (!headerToken) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
-
-    verifyToken(headerToken);
-
     const { id } = params;
 
     const blog = await Blog.findById(id);
