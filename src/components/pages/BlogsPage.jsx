@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
-import { apiUrl } from '@/lib/baseApi';
+
 
 const BlogsPage = () => {
   const [blogs, setBlogs] = useState([]);
@@ -19,9 +19,9 @@ const BlogsPage = () => {
     async function fetchBlogs() {
       setLoading(true);
       try {
-        const url = categorySlug
-          ? apiUrl(`/api/blogs/category/${categorySlug}`)
-          : apiUrl('/api/blogs');
+            const url = categorySlug
+        ? `/api/blogs/category/${categorySlug}`
+        : `/api/blogs`;
 
         const res = await fetch(url);
 
@@ -58,7 +58,7 @@ const BlogsPage = () => {
     async function fetchCategories() {
       try {
         // ❗ FIX: Correct API URL usage
-        const res = await fetch(apiUrl('/api/categories'));
+      const res = await fetch('/api/categories');
 
         if (!res.ok) {
           console.error("Category API Error:", await res.text());
