@@ -34,7 +34,12 @@ export default function AdminSidebar({ isOpen }) {
     },
     {
       name: "Blogs",
-      path: "/admin/blogs",
+      path: "/admin/blogs", 
+      icon: <FileText className="w-5 h-5 mr-3" />,
+    },
+     {
+      name: "Pages",
+      path: "/admin/pages",
       icon: <FileText className="w-5 h-5 mr-3" />,
     },
     
