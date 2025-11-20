@@ -1,25 +1,9 @@
 import { NextResponse } from "next/server";
 import { connectToDB } from "@/lib/dbConnect";
 import Blog from "@/lib/models/Blog";
-import { verifyToken } from "@/lib/auth";
 import { uploadToCloudinary } from "@/lib/uploadImage";
-import Category from "@/lib/models/Category";
 
-export async function OPTIONS() {
-  return NextResponse.json(
-    {},
-    {
-      status: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-        "Access-Control-Allow-Methods":
-          "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, x-admin-token",
-        "Access-Control-Allow-Credentials": "true",
-      },
-    }
-  );
-}
+
 
 export async function GET() {
   await connectToDB();
