@@ -16,7 +16,7 @@ export default function Page() {
     <>
       <HeroSlider /> 
       <DirectorMessage />
-      <PrincipalMessage />
+      {/* <PrincipalMessage /> */}
       <CardFacility />
       <AboutUs />
       <WhyChooseUs />
