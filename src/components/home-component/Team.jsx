@@ -15,18 +15,18 @@ const Team = () => {
         email: "sarah@greenviewschool.edu"
       }
     },
-    {
-      name: "NAMRATA ESTHER SINGH",
-      role: "Principal",
-      image: "images/principle.jpg",
-      bio: "MA,B.Ed,Diploma in Early childhood education,Diploma in home nursing and first Aid by Red Cross society. 14 years of experience in education industry",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-        email: "marcus@greenviewschool.edu"
-      }
-    },
+    // {
+    //   name: "NAMRATA ESTHER SINGH",
+    //   role: "Principal",
+    //   image: "images/principle.jpg",
+    //   bio: "MA,B.Ed,Diploma in Early childhood education,Diploma in home nursing and first Aid by Red Cross society. 14 years of experience in education industry",
+    //   social: {
+    //     linkedin: "#",
+    //     twitter: "#",
+    //     github: "#",
+    //     email: "marcus@greenviewschool.edu"
+    //   }
+    // },
 
    
   ];
